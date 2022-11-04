@@ -29,7 +29,8 @@ exports.createUser = async (req,res)=>{
             state : req.body.state,
             country : req.body.country,
             pincode : req.body.pincode,
-            location: req.body.location
+            location: req.body.location,
+            phone:req.bdy.phone
         });
         const token = jwt.sign({uid:User.id,type:"user"},process.env.JWT_SECRET_KEY,
                 {expiresIn:process.env.JWT_EXPIRES_IN});
