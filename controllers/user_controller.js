@@ -21,16 +21,7 @@ exports.createUser = async (req,res)=>{
             password : req.body.password,
             name : req.body.name,
             dob: req.body.dob,
-            addressLine1 : req.body.addressLine1,
-            addressLine2 : req.body.addressLine,
-            addressLine3 : req.body.addressLine3,
-            city : req.body.city,
-            district : req.body.district,
-            state : req.body.state,
-            country : req.body.country,
-            pincode : req.body.pincode,
-            location: req.body.location,
-            phone:req.body.phone
+            phone: req.body.phone
         });
         const token = jwt.sign({uid:User.id,type:"user"},process.env.JWT_SECRET_KEY,
                 {expiresIn:process.env.JWT_EXPIRES_IN});
@@ -73,9 +64,6 @@ exports.loginUser = async function(req,res){
 
 }
 
-exports.getUserInfo = function(req,res){
-    
-}
 
 exports.updateUser = async function(req,res){
     if(req.body.password){

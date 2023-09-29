@@ -36,37 +36,7 @@ const UserSchema = mongoose.Schema({
         unique : true,
         required : [true,"Phone is required"]
     },
-    addressLine1 : {
-        type : String,
-        required : [true,"Address line 1 is required"]
-    },
-    addressLine2 : {
-        type : String
-    },
-    addressLine3 : {
-        type : String
-    },
-    city : {
-        type : String,
-        required : [true,"City is required"]
-    },
-    district : {
-        type : String,
-        required : [true,"District is required"]
-    },
-    state : {
-        type : String,
-        required : [true,"State is required"]
-    },
-    country : {
-        type : String,
-        required : [true,"Country is required"]
-    },
-    pincode : {
-        type : String,
-        required : [true,"Pincode is required"]
-    },
-    
+   
     passwordChangedAt : {
         type : Date,
     },

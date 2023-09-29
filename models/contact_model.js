@@ -18,40 +18,12 @@ const ContactSchema = mongoose.Schema({
     middleName : {
         type : String,
     },
-    dob : {
-        type : Date,
-        required : [true,"DOB is required"]
-    },
-    addressLine1 : {
+ 
+    address : {
         type : String,
         required : [true,"Address line 1 is required"]
     },
-    addressLine2 : {
-        type : String
-    },
-    addressLine3 : {
-        type : String
-    },
-    city : {
-        type : String,
-        required : [true,"City is required"]
-    },
-    district : {
-        type : String,
-        required : [true,"District is required"]
-    },
-    state : {
-        type : String,
-        required : [true,"State is required"]
-    },
-    country : {
-        type : String,
-        required : [true,"Country is required"]
-    },
-    pincode : {
-        type : String,
-        required : [true,"Pincode is required"]
-    },
+
     email : {
         type : String,
         unique : true,
@@ -60,6 +32,10 @@ const ContactSchema = mongoose.Schema({
     contactCreatedAt : {
         type : Date,
     },
+    createdBy : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+    }
 
 });
 

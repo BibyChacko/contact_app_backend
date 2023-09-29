@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const cors = require('cors');
 
 const userRouter = require("./routers/user_route");
+const contactRouter = require("./routers/contact_router");
 
 const authMiddleware = require("./middlewares/auth_middleware");
 
@@ -20,11 +21,12 @@ app.get("/health",(req,res)=>{
 
 /// Open Routes goes here
 app.use("/user",userRouter);
-/// Closed Routes goes here
-app.use(authMiddleware.checkIfTokenIsPresent);
+
+app.use("/contact",contactRouter);
 app.all("*",(req,res,next)=>{
     res.status(404).json({status:false,error: `Can't find the route ${req.originalUrl}`});
 });
+
 app.use((err,req,res,next)=>{
     err.statusCode = err.statusCode || 500;
     err.status = false;

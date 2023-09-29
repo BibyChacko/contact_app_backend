@@ -1,5 +1,6 @@
 const {promisify} = require("util");
 const jwt = require("jsonwebtoken");
+const UserModel = require("../models/user_model");
 
 exports.checkIfTokenIsPresent = async function(req,res,next){
     if(!req.headers.authorization || !req.headers.authorization.startsWith("Bearer")){
@@ -8,6 +9,7 @@ exports.checkIfTokenIsPresent = async function(req,res,next){
     }
     
     try{
+        console.log("Reached middleware");
         const token = req.headers.authorization.split(" ")[1];
         const decoded = await promisify(jwt.verify)(token,process.env.JWT_SECRET_KEY);
     
@@ -21,6 +23,7 @@ exports.checkIfTokenIsPresent = async function(req,res,next){
             res.status(401).json({status:false,error:"Password changed. Please login again",forceLogin:true}); 
             return;
         }
+        
         req.headers.user = freshUser;
         next();
     }catch(ex){
